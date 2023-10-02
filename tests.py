@@ -11,12 +11,9 @@ class TestDummyRegressorWithFracSum(unittest.TestCase):
         random_state = np.random.RandomState()
 
         X = [[0]] * 4  # ignored
-        print(X)
         y = random_state.randn(4, 3)
-        print(y)
         reg = DummyRegressorFracSum()
         reg.fit(X, y)
-        print(reg.predict(X))
         assert_array_equal(reg.predict(X),
                            [np.sum(np.mod(y, 1), axis=0)] * len(X))
 
